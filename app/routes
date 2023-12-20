@@ -1,0 +1,10 @@
+/             RootR        GET
+/tasks        TasksR       GET
+/tasks/#Int   TaskR        GET POST
+/rules        RulesR       GET
+/leaderboard  LBoardR      GET
+/about        AboutR       GET
+/auth         AuthR        Auth   getAuth
+/register     RegisterR    GET POST
+/static/0     StaticR      Static appStatic
+/static/1     TaskStaticR  Static taskFiles

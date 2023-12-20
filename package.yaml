@@ -1,0 +1,74 @@
+spec-version: 0.35.1
+name: webctf
+version: 0.1.0.0
+maintainer: Head-Gardener <rashbin2019np@gmail.com>
+category: Web
+
+ghc-options: 
+  - -Wall
+
+language: GHC2021
+default-extensions:
+  - OverloadedStrings
+  - QuasiQuotes
+  - TemplateHaskell
+  - TypeFamilies
+  - FlexibleContexts
+  - FlexibleInstances
+  - DerivingStrategies
+  - UndecidableInstances
+  - DataKinds
+  - ViewPatterns
+
+dependencies:
+  - base >= 4.12 && < 5
+  - text
+  - mtl
+  - persistent
+  - persistent-sqlite
+  - time
+  - monad-logger
+  - resourcet
+
+library:
+  source-dirs: src
+  generated-other-modules: Paths_webctf
+  dependencies:
+    - utf8-string
+    - transformers
+    - bytestring
+
+executables:
+  edge:
+    source-dirs: app
+    main: Main.hs
+    generated-other-modules: Paths_webctf
+    dependencies:
+      - webctf
+      - bytestring
+      - yesod
+      - yesod-static
+      - yesod-auth
+      - yesod-auth-hashdb
+    ghc-options:
+      - -threaded
+  manager:
+    source-dirs: manager
+    main: Main.hs
+    generated-other-modules: Paths_webctf
+    dependencies:
+      - webctf
+      - bytestring
+    ghc-options:
+      - -threaded
+
+tests:
+  spec:
+    main: Spec.hs
+    source-dirs:
+      - test
+    dependencies:
+      - hspec
+      - QuickCheck
+      - webctf
+    build-tools: hspec-discover
