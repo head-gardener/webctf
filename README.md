@@ -5,21 +5,21 @@ deployment file structure using `nix` and `bash` scripts.
 
 ## backup
 
-<!-- :read ! ls webctf/backup/ | tail --!>
-<!-- vip :s/.*/> \0\/ --!>
+<!-- :read ! ls webctf/backup/ | tail -->
+<!-- vip :s/.*/> \0\/ -->
 
-> data-26-10:11/
-> data-26-10:16/
-> data-26-10:21/
-> data-26-10:26/
-> data-26-10:31/
-> data-26-10:36/
-> data-26-10:41/
-> data-26-10:46/
-> data-26-10:51/
-> data-26-10:56/
+> data-26-10:11/  
+> data-26-10:16/  
+> data-26-10:21/  
+> data-26-10:26/  
+> data-26-10:31/  
+> data-26-10:36/  
+> data-26-10:41/  
+> data-26-10:46/  
+> data-26-10:51/  
+> data-26-10:56/  
 
-See [](#backup.sh) for details.
+See [backup.sh](#backup.sh) for details.
 
 ## backup.sh
 
@@ -46,33 +46,33 @@ Wrapper around `nix-build`. Generates `result` symlink than contains binaries.
 
 ## log
 
-<!-- vip :'<,'>s/\(.\{75\}\).*/> \1... --!>
-> 20.197.51.98 - - [26/Dec/2023:20:13:14 +0300] "GET /.env HTTP/1.1" 404 111 ...
-> 46.53.248.194 - - [26/Dec/2023:20:55:31 +0300] "GET / HTTP/1.1" 303 0 "" "M...
-> 46.53.248.194 - - [26/Dec/2023:20:55:31 +0300] "GET /tasks HTTP/1.1" 200 - ...
-> 46.53.248.194 - - [26/Dec/2023:20:55:31 +0300] "GET /static/0/styles.css?et...
-> [Debug#SQL] SELECT "id", "name", "password", "pts", "solved" FROM "user" OR...
-> 46.53.248.194 - - [26/Dec/2023:20:55:33 +0300] "GET /leaderboard HTTP/1.1" ...
-> 46.53.248.194 - - [26/Dec/2023:20:55:34 +0300] "GET /about HTTP/1.1" 200 80...
-> 192.241.239.36 - - [26/Dec/2023:21:14:56 +0300] "GET /ReportServer HTTP/1.1...
-> 205.210.31.104 - - [26/Dec/2023:21:26:46 +0300] "GET / HTTP/1.1" 303 0 "" "...
-> 205.210.31.104 - - [26/Dec/2023:21:26:46 +0300] "GET /tasks HTTP/1.1" 200 2...
+<!-- vip :'<,'>s/\(.\{75\}\).*/> \1... -->
+> 20.197.51.98 - - [26/Dec/2023:20:13:14 +0300] "GET /.env HTTP/1.1" 404 111 ...  
+> 46.53.248.194 - - [26/Dec/2023:20:55:31 +0300] "GET / HTTP/1.1" 303 0 "" "M...  
+> 46.53.248.194 - - [26/Dec/2023:20:55:31 +0300] "GET /tasks HTTP/1.1" 200 - ...  
+> 46.53.248.194 - - [26/Dec/2023:20:55:31 +0300] "GET /static/0/styles.css?et...  
+> [Debug#SQL] SELECT "id", "name", "password", "pts", "solved" FROM "user" OR...  
+> 46.53.248.194 - - [26/Dec/2023:20:55:33 +0300] "GET /leaderboard HTTP/1.1" ...  
+> 46.53.248.194 - - [26/Dec/2023:20:55:34 +0300] "GET /about HTTP/1.1" 200 80...  
+> 192.241.239.36 - - [26/Dec/2023:21:14:56 +0300] "GET /ReportServer HTTP/1.1...  
+> 205.210.31.104 - - [26/Dec/2023:21:26:46 +0300] "GET / HTTP/1.1" 303 0 "" "...  
+> 205.210.31.104 - - [26/Dec/2023:21:26:46 +0300] "GET /tasks HTTP/1.1" 200 2...  
 
 A file that acts as a named pipe to which server's output is redirected.
 
 ## result
 
-A symlink to server binaries. See [](#build.sh).
+A symlink to server binaries. See [build.sh](#build.sh).
 
 ## runtime
 
-> webctf/runtime/
-> ├── common
-> │   └── ...
-> ├── data
-> │   └── test.db3
-> └── static
->     └── styles.css
+> webctf/runtime/  
+> ├── common  
+> │   └── ...  
+> ├── data  
+> │   └── test.db3  
+> └── static  
+>     └── styles.css  
 
 `tmpfs` mounted directory containing static files and application data.
 
@@ -100,7 +100,7 @@ done
 ```
 
 Simple script that waits for `break` to restart the server or backup's time to roll back.
-Depends on existence of [](#result).
+Depends on existence of [result](#result).
 
 ## sync.sh
 
@@ -108,34 +108,34 @@ Depends on existence of [](#result).
 cp source/{common,static} runtime/ -rv
 ```
 
-Shorthand to copy static files to [](#runtime).
+Shorthand to copy static files to [runtime](#runtime).
 
 ## source
 
-> ./webctf/source/
-> ├── app
-> │   ├── Application.hs
-> │   ├── Entities.hs
-> │   ├── Foundation.hs
-> │   ├── Main.hs
-> │   ├── Render.hs
-> │   ├── Routers.hs
-> │   └── routes
-> ├── common
-> │   └── ...
-> ├── default.nix
-> ├── LICENSE
-> ├── manager
-> │   └── Main.hs
-> ├── package.yaml
-> ├── shell.nix
-> ├── src
-> │   └── Data
-> ├── static
-> ├── webctf.cabal
-> └── ...
+> ./webctf/source/  
+> ├── app  
+> │   ├── Application.hs  
+> │   ├── Entities.hs  
+> │   ├── Foundation.hs  
+> │   ├── Main.hs  
+> │   ├── Render.hs  
+> │   ├── Routers.hs  
+> │   └── routes  
+> ├── common  
+> │   └── ...  
+> ├── default.nix  
+> ├── LICENSE  
+> ├── manager  
+> │   └── Main.hs  
+> ├── package.yaml  
+> ├── shell.nix  
+> ├── src  
+> │   └── Data  
+> ├── static  
+> ├── webctf.cabal  
+> └── ...  
 
-Application sources. Built by `nix` with [](#build.sh).
+Application sources. Built by `nix` with [build.sh](#build.sh).
 
 ### app
 
