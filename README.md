@@ -1,6 +1,6 @@
 # WebCTF
 
-Simple web-server serving CTF-like tasks. What follows is an overview of a possible
+Simple web-application serving CTF-like tasks. What follows is an overview of a possible
 deployment file structure using `nix` and `bash` scripts.
 
 ## backup
