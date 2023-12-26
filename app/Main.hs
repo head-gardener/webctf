@@ -16,15 +16,15 @@ import Data.Text.Encoding (decodeUtf8)
 main :: IO ()
 main = do
   port <- getArgs >>= parseArgs
-  taskStat <- static "/tmp/ctf"
+  taskStat <- static "./common"
   stat <- staticDevel "./static"
   passwd <- makePassword "1234" 17
   let admin = User "admin" (Just $ decodeUtf8 passwd) 0
-  runStderrLoggingT $ withSqlitePool "test.db3" 10 $ \pool -> liftIO $ do
+  runStderrLoggingT $ withSqlitePool "data/test.db3" 10 $ \pool -> liftIO $ do
     runResourceT $ flip runSqlPool pool $ runMigration migrateAll
     -- _ <- runResourceT $ flip runSqlPool pool $ insertBy admin
     warp port $ WebCTF pool stat taskStat
   where
     parseArgs [port] = return $ read port
-    parseArgs [] = return 3000
+    parseArgs [] = return 8080
     parseArgs _ = putStrLn "unexpected extra args" >> exitFailure

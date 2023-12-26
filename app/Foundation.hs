@@ -2,7 +2,6 @@ module Foundation where
 
 import Control.Monad (when)
 import Database.Persist.Sqlite
-import Debug.Trace (trace, traceShow)
 import Entities
 import Yesod
 import Yesod.Auth
@@ -16,7 +15,7 @@ data WebCTF = WebCTF
   }
 
 staticFiles "./static"
-staticFiles "/tmp/ctf"
+staticFiles "./common"
 
 mkYesodData "WebCTF" $(parseRoutesFile "app/routes")
 
@@ -39,6 +38,13 @@ header = do
               <a href=@{AuthR LoginR}>LOGIN
     |]
 
+footer :: Widget
+footer = [whamlet|
+    <p .footer>
+      <a .footerlink href="https://4anime.is/serial-experiments-lain-503">
+        head-gardener, 2023. Keep your head up.
+  |] 
+
 defPage :: (MonadHandler m, m ~ HandlerFor WebCTF) => String -> Widget -> m Html
 defPage = defPage' True
 
@@ -49,6 +55,7 @@ defPage' h s w = defaultLayout $ do
   addStylesheet $ StaticR styles_css
   when h [whamlet|<h1>#{s}|]
   w
+  footer
 
 instance YesodPersist WebCTF where
   type YesodPersistBackend WebCTF = SqlBackend

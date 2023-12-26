@@ -1,10 +1,10 @@
 :root {
   --primary-color: #7cbdb4;
   --secondary: #c4c4c4;
-  --headings: #100005;
-  --content: #301025;
-  --link: #301025;
-  --link-hover: #402035;
+  --headings: #202925;
+  --content: #2a2f2b;
+  --link: #303935;
+  --link-hover: #405045;
 }
 
 .tboxlink {
@@ -17,6 +17,8 @@
 
 .taskbox {
   position: relative;
+  width: 100px;
+  height: 100px;
   background-color: var(--primary-color);
   padding: 30px;
   margin: 5px;
@@ -24,6 +26,22 @@
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease-in-out;
+}
+
+li {
+  color: var(--content);
+}
+
+.footer {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  color: #595959;
+}
+
+.footerlink {
+  color: #595959;
 }
 
 .solved {
@@ -48,6 +66,7 @@ a:hover {
   background: var(--secondary);
   width: 90%;
   padding: 20px;
+  margin: 0 0 50px 0;
 }
 
 body {
