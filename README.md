@@ -19,7 +19,7 @@ deployment file structure using `nix` and `bash` scripts.
 > data-26-10:51/  
 > data-26-10:56/  
 
-See [backup.sh](#backup.sh) for details.
+See [backup.sh](#backupsh) for details.
 
 ## backup.sh
 
@@ -62,7 +62,7 @@ A file that acts as a named pipe to which server's output is redirected.
 
 ## result
 
-A symlink to server binaries. See [build.sh](#build.sh).
+A symlink to server binaries. See [build.sh](#buildsh).
 
 ## runtime
 
@@ -135,7 +135,7 @@ Shorthand to copy static files to [runtime](#runtime).
 > ├── webctf.cabal  
 > └── ...  
 
-Application sources. Built by `nix` with [build.sh](#build.sh).
+Application sources. Built by `nix` with [build.sh](#buildsh).
 
 ### app
 
